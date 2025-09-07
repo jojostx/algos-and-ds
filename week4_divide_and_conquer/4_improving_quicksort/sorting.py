@@ -3,6 +3,7 @@ from random import randint
 
 def partition3(array, left, right):
     # write your code here
+    pass
 
 
 def randomized_quick_sort(array, left, right):
