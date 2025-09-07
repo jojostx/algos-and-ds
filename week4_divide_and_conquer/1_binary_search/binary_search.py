@@ -6,13 +6,13 @@ def binary_search(keys, query):
         mid = (start + end) // 2
 
         if query == keys[mid]:
-            return True
+            return mid
         elif query < keys[mid]:
             end = mid - 1
         else:
             start = mid + 1
 
-    return False
+    return -1
 
 
 if __name__ == '__main__':
