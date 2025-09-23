@@ -5,17 +5,25 @@ import threading
 
 
 def compute_height(n, parents):
-    # Replace this code with a faster implementation
-    max_height = 0
-    for vertex in range(n):
-        height = 0
-        current = vertex
-        while current != -1:
-            height += 1
-            current = parents[current]
-        max_height = max(max_height, height)
-    return max_height
+    children = [[] for _ in range(n)]
+    root = None
 
+    for i, p in enumerate(parents):
+        if p == -1:
+            root = i
+        else:
+            children[p].append(i)
+
+    max_height = 0
+    stack = [(root, 1)]
+    
+    while stack:
+        node, depth = stack.pop()
+        max_height = max(max_height, depth)
+        for child in children[node]:
+            stack.append((child, depth + 1))
+ 
+    return max_height
 
 def main():
     n = int(input())
